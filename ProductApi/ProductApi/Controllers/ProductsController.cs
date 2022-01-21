@@ -66,7 +66,8 @@ namespace ProductApi.Controllers
         {
             try
             {
-                _context.Products.Add(product);
+                product.DateModified = DateTime.Now;
+                _context.Products.Add(product);                
                 _context.SaveChanges();
 
                 return new CreatedResult($"/products/{product.ProductNumber.ToLower()}", product);
@@ -117,6 +118,7 @@ namespace ProductApi.Controllers
                 product.Department = newProduct.Department ?? product.Department;
                 product.Name = newProduct.Name ?? product.Name;
                 product.Price = newProduct.Price ?? product.Price;
+                product.DateModified = DateTime.Now;
                 product.RelatedProducts = newProduct.RelatedProducts ?? product.RelatedProducts;
                 product.Reviews = newProduct.Reviews ?? product.Reviews;
 

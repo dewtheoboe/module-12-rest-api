@@ -25,6 +25,10 @@ namespace ProductApi.Models
         [Required]
         [Display(Name = "department")]
         public string Department { get; set; }
+         
+        [Required]
+        [Display(Name = "dateModified")]
+        public virtual DateTime DateModified { get; set; }
 
         [Required]
         [Display(Name = "review")]
@@ -49,6 +53,9 @@ namespace ProductApi.Models
 
         [Display(Name = "department")]
         public string Department { get; set; }
+
+        [Display(Name = "dateModified")]
+        public virtual DateTime DateModified { get; set; }
 
         [Display(Name = "review")]
         public virtual List<Review> Reviews { get; set; }

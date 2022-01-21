@@ -12,6 +12,7 @@ namespace ProductApi.Models
         public static void InitData(ProductContext context)
         {
             var rnd = new Random();
+            var rndDate = new RandomDateTime();
 
             var adjectives = new[] { "Small", "Ergonomic", "Rustic",
                 "Smart", "Sleek" };
@@ -32,6 +33,7 @@ namespace ProductApi.Models
                 var name = names[rnd.Next(0, 5)];
                 var department = departments[rnd.Next(0, 5)];
                 var productId = $"{x,-3:000}";
+                var date = rndDate.CreateRandomDate();
 
                 List<Review> reviews = new List<Review>();
 
@@ -95,12 +97,14 @@ namespace ProductApi.Models
                     Name = $"{adjective} {material} {name}",
                     Price = (double)rnd.Next(1000, 9000) / 100,
                     Department = department,
+                    DateModified = date,
                     Reviews = reviews,
                     RelatedProducts = relatedProducts
                 };
             }));
 
             context.SaveChanges();
+
         }
     }
 }
